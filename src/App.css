@@ -1,0 +1,92 @@
+.App-header {
+  background-color: #222;
+  height: auto;
+  padding: 20px;
+  color: white;
+  background-image: url(./images/bg-1.jpg);
+  background-size: cover;
+  background-position-y: 50%;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+}
+
+.portrait {
+  width: 256px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.portrait img {
+  width: 100%;
+}
+
+.table-bordered > thead > tr > th {
+  border: 0 !important;
+}
+
+.table-bordered > thead > tr > th {
+  background: #3e3e3e;
+  font-weight: 400;
+  color: white;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+  line-height: 1.1 !important;
+}
+
+.m-t-1-5 {
+  margin-top: 1.5em;
+}
+
+.m-b-0-5 {
+  margin-bottom: 0.5em !important;
+}
+
+.m-b-1-5 {
+  margin-bottom: 1.5em;
+}
+
+.m-b-1 {
+  margin-bottom: 1em;
+}
+
+.m-b-0 {
+  margin-bottom: 0px !important;
+}
+
+.f-s-1-5 {
+  font-size: 1.5em !important;
+}
+
+.opac-0-5 {
+  opacity: 0.5;
+}
+
+.color-green {
+  color: #0aa50a;
+}
+
+.color-brown {
+  color: #ca9418;
+}
+
+.color-red {
+  color: #d41212;
+}
+
+.hauling-calculator-widget-icon {
+  width: 1px;
+  height: 1px;
+  padding: 24px;
+  background-color: black;
+  border-radius: 100%;
+}
