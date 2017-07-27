@@ -6,7 +6,8 @@ const TableBody = function({
   componentType,
   stationInformation,
   systemInformation,
-  selectedRowDataMarketOrders
+  selectedRowDataMarketOrders,
+  toggleClassSelected
 }) {
   const exceptions = {
     is_buy_order: {
@@ -58,7 +59,11 @@ const TableBody = function({
     <tbody>
       {data.map((row, i) => {
         return (
-          <tr key={i} onClick={() => selectedRowDataMarketOrders(row)}>
+          <tr
+            key={i}
+            className={toggleClassSelected === i ? 'selectedRow' : ''}
+            onClick={() => selectedRowDataMarketOrders(row, i)}
+          >
             {dataOrder.map((column, i) => {
               if (
                 exceptions[column] &&

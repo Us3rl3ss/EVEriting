@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import ApiHelpers from './helpers/ApiHelpers';
 import TableElem from './components/TableElem';
-import HaulingCalculator from './components/HaulingCalculator';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   constructor() {
@@ -171,9 +171,10 @@ class App extends Component {
     );
   }
 
-  selectedRowDataMarketOrders(rowData) {
+  selectedRowDataMarketOrders(rowData, index) {
     this.setState({
-      selectedRowDataMarketOrders: rowData
+      selectedRowDataMarketOrders: rowData,
+      toggleClassSelected: index
     });
   }
 
@@ -202,11 +203,6 @@ class App extends Component {
               )} at ${moment(this.state.user.birthday).format('HH:mm:ss')}`}
             </div>
           </div>
-
-          <HaulingCalculator
-            selectedRowDataMarketOrders={this.state.selectedRowDataMarketOrders}
-            marketOrdersRegionItem={this.state.marketOrdersRegionItem}
-          />
         </div>
       );
     }
@@ -216,24 +212,34 @@ class App extends Component {
     console.log('this.state', this.state);
     return (
       <div className="App">
-        {this.showHeader()}
-
-        <TableElem
-          data={this.state.marketHistoryRegionItem}
-          componentType="marketHistoryRegionItem"
+        <Navbar
+          selectedRowDataMarketOrders={this.state.selectedRowDataMarketOrders}
+          marketOrdersRegionItem={this.state.marketOrdersRegionItem}
         />
 
-        <TableElem
-          data={this.state.marketOrdersRegionItem}
-          componentType="marketOrdersRegionItem"
-          handleMarketOrdersRegion={this.handleMarketOrdersRegion}
-          handleMarketOrdersItem={this.handleMarketOrdersItem}
-          regionInformation={this.state.regionInformation}
-          typeInformation={this.state.typeInformation}
-          stationInformation={this.state.stationInformation}
-          systemInformation={this.state.systemInformation}
-          selectedRowDataMarketOrders={this.selectedRowDataMarketOrders}
-        />
+        <div className="m-l-3 clearfix">
+          {this.showHeader()}
+
+          <TableElem
+            data={this.state.marketHistoryRegionItem}
+            componentType="marketHistoryRegionItem"
+          />
+
+          <TableElem
+            data={this.state.marketOrdersRegionItem}
+            componentType="marketOrdersRegionItem"
+            handleMarketOrdersRegion={this.handleMarketOrdersRegion}
+            handleMarketOrdersItem={this.handleMarketOrdersItem}
+            regionInformation={this.state.regionInformation}
+            typeInformation={this.state.typeInformation}
+            stationInformation={this.state.stationInformation}
+            systemInformation={this.state.systemInformation}
+            selectedRowDataMarketOrders={this.selectedRowDataMarketOrders}
+            toggleClassSelected={this.state.toggleClassSelected}
+          />
+        </div>
+
+        <div className="fixedBg" />
       </div>
     );
   }

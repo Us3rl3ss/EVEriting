@@ -98,10 +98,10 @@ class HaulingCalculator extends Component {
   }
 
   progressBarConfig() {
-    if (this.state.profit > 0) {
+    if (this.state.profit > 0 || (!this.state.profit && !this.state.loss)) {
       return {
         label: (
-          <label>
+          <label className="f-w-700">
             {`Your profit is `}
             <div className="f-s-1-5">
               {formatMoney(this.state.profit)}
@@ -110,15 +110,16 @@ class HaulingCalculator extends Component {
         ),
         bsStyle: 'success',
         profitOrLoss: this.state.profit,
-        gainInvestmentRatio: `1 : ${(this.state.outcome /
-          this.state.profit).toFixed(1)}`
+        gainInvestmentRatio: `1 : ${parseInt(
+          this.state.outcome / this.state.profit
+        )}`
       };
     }
 
     if (this.state.loss < 0) {
       return {
         label: (
-          <label>
+          <label className="f-w-700">
             {`Your loss is `}
             <div className="f-s-1-5">
               {formatMoney(this.state.loss)}
@@ -127,8 +128,9 @@ class HaulingCalculator extends Component {
         ),
         bsStyle: 'danger',
         profitOrLoss: Math.abs(this.state.loss),
-        gainInvestmentRatio: `1 : ${(this.state.outcome /
-          Math.abs(this.state.loss)).toFixed(1)}`
+        gainInvestmentRatio: `1 : ${parseInt(
+          this.state.outcome / Math.abs(this.state.loss)
+        )}`
       };
     }
   }
@@ -153,9 +155,6 @@ class HaulingCalculator extends Component {
               max={this.state.outcome}
               key={2}
             />
-            {
-              //<ProgressBar bsStyle="danger" now={10} key={3} />
-            }
           </ProgressBar>
           <div>
             <small>
@@ -166,6 +165,13 @@ class HaulingCalculator extends Component {
             </small>
           </div>
         </div>
+      );
+    } else {
+      return (
+        <label className="f-w-700 form-group">
+          <div className="f-s-1-5">EVElator</div>
+          Enter values or select from table to calculate profit
+        </label>
       );
     }
   }
@@ -219,12 +225,8 @@ class HaulingCalculator extends Component {
       </Popover>
     );
     return (
-      <OverlayTrigger
-        trigger="click"
-        placement="bottom"
-        overlay={popoverBottom}
-      >
-        <Button>Hauling calculator</Button>
+      <OverlayTrigger trigger="click" placement="right" overlay={popoverBottom}>
+        <img src="../img/calculator.png" />
       </OverlayTrigger>
     );
   }

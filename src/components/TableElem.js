@@ -12,7 +12,8 @@ const TableElem = function({
   typeInformation,
   stationInformation,
   systemInformation,
-  selectedRowDataMarketOrders
+  selectedRowDataMarketOrders,
+  toggleClassSelected
 }) {
   let exceptions = {
     marketHistoryRegionItem: {
@@ -76,7 +77,7 @@ const TableElem = function({
         </FormGroup>
       </div>
 
-      <Table striped bordered condensed hover responsive>
+      <Table striped condensed hover responsive>
         <TableHead
           data={data[0]}
           dataOrder={exceptions[componentType].dataOrder}
@@ -88,6 +89,7 @@ const TableElem = function({
           stationInformation={stationInformation}
           systemInformation={systemInformation}
           selectedRowDataMarketOrders={selectedRowDataMarketOrders}
+          toggleClassSelected={toggleClassSelected}
         />
       </Table>
     </div>
